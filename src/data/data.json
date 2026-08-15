@@ -1,0 +1,412 @@
+{
+  "site": {
+    "name": "JinVaani",
+    "tagline": "जिन भक्ति के मधुर स्वर",
+    "description": "JinVaani – A peaceful Jain devotional radio streaming the finest stavans, bhajans, mantras and spiritual content. Immerse yourself in the divine music of the Jain tradition.",
+    "year": 2026,
+    "domain": "jinvaani.com"
+  },
+  "seo": {
+    "defaultTitle": "JinVaani – जिन भक्ति के मधुर स्वर",
+    "titleTemplate": "%s | JinVaani",
+    "defaultDescription": "Listen to beautiful Jain stavans, bhajans, mantras and devotional music on JinVaani. प्रातः स्तवन, संध्या स्तवन, त्योहार विशेष।",
+    "ogImage": "/images/og-default.jpg",
+    "twitterHandle": "@JinVaani"
+  },
+  "analytics": {
+    "ga4MeasurementId": "REPLACE_WITH_GA4_ID",
+    "enabled": false
+  },
+  "visitorCounter": {
+    "provider": "mock",
+    "firebaseConfig": {
+      "apiKey": "REPLACE_WITH_FIREBASE_API_KEY",
+      "authDomain": "REPLACE_WITH_FIREBASE_AUTH_DOMAIN",
+      "databaseURL": "REPLACE_WITH_FIREBASE_DATABASE_URL",
+      "projectId": "REPLACE_WITH_FIREBASE_PROJECT_ID"
+    }
+  },
+  "playlists": [
+    {
+      "id": "morning-stavans",
+      "title": "प्रातः स्तवन",
+      "subtitle": "Morning Stavans",
+      "description": "भोर की शांत बेला में जिनदेव के पवित्र स्तवनों के साथ अपना दिन आरंभ करें। प्रातःकाल के इन मधुर स्वरों से मन को शांति और आत्मा को ऊर्जा मिलती है।",
+      "category": "stavans",
+      "youtubePlaylistId": "PLG0rVahT7uBc",
+      "heroImage": "/images/playlist-morning.jpg",
+      "backgroundImages": [
+        "/images/playlist-morning.jpg",
+        "/images/morning-3.jpg",
+        "/images/morning-4.jpg"
+      ],
+      "color": "#f59e0b",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "evening-stavans",
+      "title": "संध्या स्तवन",
+      "subtitle": "Evening Stavans",
+      "description": "संध्याकाल की मनोरम बेला में जिन भक्ति के मधुर स्वरों के साथ अपने दिन को समाप्त करें। शाम की शांति में ये स्तवन आत्मा को सुकून देते हैं।",
+      "category": "stavans",
+      "youtubePlaylistId": "REPLACE_WITH_EVENING_YOUTUBE_PLAYLIST_ID",
+      "heroImage": "/images/playlist-evening.jpg",
+      "backgroundImages": [
+        "/images/playlist-evening.jpg",
+        "/images/evening-3.jpg",
+        "/images/evening-4.jpg"
+      ],
+      "color": "#a78bfa",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "all-songs",
+      "title": "सभी गीत",
+      "subtitle": "All Songs",
+      "description": "JinVaani के सम्पूर्ण संग्रह से सभी स्तवन, भजन और मंत्रों को एक स्थान पर सुनें। नवीन और पुरातन, दोनों प्रकार की दिव्य रचनाएँ यहाँ उपलब्ध हैं।",
+      "category": "all",
+      "youtubePlaylistId": "PL_Iz6Tqlp259KfRw9Hn7CN2PgoT5Vc5Ni",
+      "heroImage": "/images/playlist-morning.jpg",
+      "backgroundImages": [
+        "/images/playlist-morning.jpg",
+        "/images/playlist-evening.jpg",
+        "/images/morning-4.jpg"
+      ],
+      "color": "#34d399",
+      "featured": false,
+      "order": 4
+    }
+  ],
+  "standaloneTracks": [
+    {
+      "id": "sidhgiri-na-shikhro-bole",
+      "title": "सिद्धगिरी के शिखरो बोले",
+      "subtitle": "Navkar Mantra",
+      "artist": "Jain Devotional",
+      "description": "सिद्धगिरी (शत्रुंजय) के शिखरों से गूंजती यह दिव्य रचना लगभग एक घंटे की है। नवकार मंत्र की इस विस्तृत प्रस्तुति में मन की गहराइयों में उतरने का अनुभव होता है।",
+      "youtubeVideoId": "IykkDplxg5A",
+      "duration": "01:00:00",
+      "durationSeconds": 3600,
+      "category": "navkar",
+      "backgroundImage": "/images/navkar.jpg",
+      "backgroundImages": [
+        "/images/navkar.jpg",
+        "/images/morning-3.jpg",
+        "/images/morning-4.jpg"
+      ],
+      "lyrics": "णमो अरिहंताणं\nणमो सिद्धाणं\nणमो आयरियाणं\nणमो उवज्झायाणं\nणमो लोए सव्व साहूणं\nएसो पंच णमोक्कारो\nसव्व पावप्पणासणो\nमंगलाणं च सव्वेसिं\nपढमं हवई मंगलं",
+      "featured": true
+    }
+  ],
+  "songs": [
+    {
+      "id": "song-1",
+      "title": "अरिहंत भगवान की जय",
+      "artist": "Jain Devotional",
+      "playlistId": "morning-stavans",
+      "playlistIndex": 0,
+      "youtubeVideoId": "REPLACE_WITH_VIDEO_ID",
+      "duration": "05:30",
+      "category": "stavan",
+      "tags": [
+        "morning",
+        "arihant"
+      ]
+    },
+    {
+      "id": "song-2",
+      "title": "महावीर स्वामी की स्तुति",
+      "artist": "Jain Devotional",
+      "playlistId": "morning-stavans",
+      "playlistIndex": 1,
+      "youtubeVideoId": "REPLACE_WITH_VIDEO_ID",
+      "duration": "07:15",
+      "category": "stavan",
+      "tags": [
+        "morning",
+        "mahavir"
+      ]
+    },
+    {
+      "id": "song-3",
+      "title": "संध्या आरती",
+      "artist": "Jain Devotional",
+      "playlistId": "evening-stavans",
+      "playlistIndex": 0,
+      "youtubeVideoId": "REPLACE_WITH_VIDEO_ID",
+      "duration": "06:00",
+      "category": "aarti",
+      "tags": [
+        "evening",
+        "aarti"
+      ]
+    }
+  ],
+  "quotes": [
+    {
+      "id": "q1",
+      "text": "अहिंसा परमो धर्मः",
+      "translation": "Non-violence is the highest religion.",
+      "source": "Jain Scripture",
+      "author": "जैन आगम"
+    },
+    {
+      "id": "q2",
+      "text": "जियो और जीने दो",
+      "translation": "Live and let live.",
+      "source": "Mahavir Swami",
+      "author": "महावीर स्वामी"
+    },
+    {
+      "id": "q3",
+      "text": "आत्मा ही परमात्मा है",
+      "translation": "The soul itself is the supreme soul.",
+      "source": "Jain Philosophy",
+      "author": "जैन दर्शन"
+    },
+    {
+      "id": "q4",
+      "text": "क्षमा वीरस्य भूषणम्",
+      "translation": "Forgiveness is the ornament of the brave.",
+      "source": "Jain Maxim",
+      "author": "जैन सूक्ति"
+    },
+    {
+      "id": "q5",
+      "text": "सम्यक् दर्शन, सम्यक् ज्ञान, सम्यक् चारित्र",
+      "translation": "Right faith, right knowledge, right conduct — the Three Jewels of Jainism.",
+      "source": "Ratnatraya",
+      "author": "रत्नत्रय"
+    },
+    {
+      "id": "q6",
+      "text": "परस्परोपग्रहो जीवानाम्",
+      "translation": "Souls render service to one another.",
+      "source": "Tattvartha Sutra",
+      "author": "तत्त्वार्थसूत्र"
+    },
+    {
+      "id": "q7",
+      "text": "अपना दीपक आप बनो",
+      "translation": "Be a lamp unto yourself.",
+      "source": "Jain Wisdom",
+      "author": "जैन सूक्ति"
+    },
+    {
+      "id": "q8",
+      "text": "मन की शांति ही सच्चा धन है",
+      "translation": "Peace of mind is the true wealth.",
+      "source": "Jain Wisdom",
+      "author": "जैन दर्शन"
+    }
+  ],
+  "katha": [
+    {
+      "id": "k1",
+      "title": "महावीर स्वामी का जीवन",
+      "subtitle": "Life of Mahavir Swami",
+      "excerpt": "भगवान महावीर का जन्म वैशाली के कुंडग्राम में हुआ था। वे जैन धर्म के चौबीसवें तीर्थंकर थे और उन्होंने अहिंसा का उपदेश दिया।",
+      "content": "भगवान महावीर का जन्म वैशाली के कुंडग्राम में हुआ था। वे जैन धर्म के चौबीसवें तीर्थंकर थे। उनके जन्म का नाम वर्धमान था। उन्होंने 30 वर्ष की आयु में गृह त्याग किया और 12 वर्षों की घोर तपस्या के बाद उन्हें केवलज्ञान की प्राप्ति हुई।",
+      "image": null,
+      "tags": [
+        "mahavir",
+        "tirthankar",
+        "life"
+      ],
+      "date": "2026-01-01"
+    },
+    {
+      "id": "k2",
+      "title": "नवकार मंत्र का महत्व",
+      "subtitle": "Significance of Navkar Mantra",
+      "excerpt": "नवकार मंत्र जैन धर्म का सर्वोच्च मंत्र है। इसमें पांच परमेष्ठियों को नमस्कार किया गया है और यह सभी पापों का नाश करने वाला है।",
+      "content": "नवकार मंत्र जैन धर्म का सर्वोच्च मंत्र है। इसमें पांच परमेष्ठियों – अरिहंत, सिद्ध, आचार्य, उपाध्याय और साधु – को नमस्कार किया गया है। यह मंत्र सभी पापों का नाश करने वाला और सर्वोच्च मंगलकारी है।",
+      "image": null,
+      "tags": [
+        "navkar",
+        "mantra",
+        "significance"
+      ],
+      "date": "2026-01-02"
+    },
+    {
+      "id": "k3",
+      "title": "शत्रुंजय की यात्रा",
+      "subtitle": "Pilgrimage to Shatrunjaya",
+      "excerpt": "शत्रुंजय पर्वत गुजरात के पालिताना में स्थित है। यहाँ हज़ारों जैन मंदिर हैं और यह जैनों का सबसे पवित्र तीर्थस्थल माना जाता है।",
+      "content": "शत्रुंजय पर्वत गुजरात के पालिताना में स्थित है। यहाँ हज़ारों जैन मंदिर हैं और यह जैनों का सबसे पवित्र तीर्थस्थल माना जाता है। इस पर्वत पर चढ़ना स्वयं एक तपस्या है — 3500 से अधिक सीढ़ियाँ चढ़कर जब भक्त ऊपर पहुंचते हैं, तो उनका मन शांति और भक्ति से भर जाता है।",
+      "image": null,
+      "tags": [
+        "shatrunjaya",
+        "pilgrimage",
+        "tirth"
+      ],
+      "date": "2026-01-10"
+    }
+  ],
+  "darshan": [
+    {
+      "id": "d1",
+      "title": "शत्रुंजय तीर्थ",
+      "subtitle": "Shatrunjaya Tirth – Palitana",
+      "description": "गुजरात के भावनगर जिले में स्थित शत्रुंजय पहाड़ पर हजारों जैन मंदिर हैं। यह जैनों का सबसे पवित्र तीर्थ स्थान माना जाता है।",
+      "image": null,
+      "location": "Palitana, Gujarat",
+      "tags": [
+        "tirth",
+        "shatrunjaya",
+        "palitana"
+      ]
+    },
+    {
+      "id": "d2",
+      "title": "गिरनार तीर्थ",
+      "subtitle": "Girnar Tirth – Junagadh",
+      "description": "गिरनार पर्वत पर अनेक जैन तीर्थंकरों के मंदिर स्थित हैं। यह भी एक अत्यंत पवित्र जैन तीर्थ है।",
+      "image": null,
+      "location": "Junagadh, Gujarat",
+      "tags": [
+        "tirth",
+        "girnar",
+        "junagadh"
+      ]
+    },
+    {
+      "id": "d3",
+      "title": "रणकपुर तीर्थ",
+      "subtitle": "Ranakpur Jain Temple",
+      "description": "राजस्थान के रणकपुर में स्थित यह मंदिर अपनी 1444 संगमरमर की नक्काशीदार स्तंभों के लिए प्रसिद्ध है।",
+      "image": null,
+      "location": "Ranakpur, Rajasthan",
+      "tags": [
+        "tirth",
+        "ranakpur",
+        "rajasthan"
+      ]
+    }
+  ],
+  "anubhav": [
+    {
+      "id": "a1",
+      "name": "प्रिया शाह",
+      "location": "Ahmedabad",
+      "text": "JinVaani ने मेरे सुबह की शुरुआत को बदल दिया। प्रातः स्तवन सुनकर दिन बहुत अच्छा जाता है।",
+      "rating": 5,
+      "date": "2026-01-15"
+    },
+    {
+      "id": "a2",
+      "name": "राजेश जैन",
+      "location": "Jaipur",
+      "text": "सिद्धगिरी के शिखरो बोले – यह रचना सुनकर मन को अद्भुत शांति मिलती है। धन्यवाद JinVaani।",
+      "rating": 5,
+      "date": "2026-01-20"
+    },
+    {
+      "id": "a3",
+      "name": "सुनीता मेहता",
+      "location": "Mumbai",
+      "text": "त्योहार विशेष playlist पर्युषण के दौरान बहुत काम आई। हर भजन बेहद सुंदर है।",
+      "rating": 5,
+      "date": "2026-02-01"
+    },
+    {
+      "id": "a4",
+      "name": "अनिल कुमार जैन",
+      "location": "Surat",
+      "text": "संध्या स्तवन सुनकर दिन की थकान दूर हो जाती है। यह वेबसाइट जैन समाज के लिए एक अमूल्य उपहार है।",
+      "rating": 5,
+      "date": "2026-02-10"
+    },
+    {
+      "id": "a5",
+      "name": "मीना बोहरा",
+      "location": "Jodhpur",
+      "text": "नवकार मंत्र की प्रस्तुति अत्यंत मनमोहक है। रोज़ सुनती हूँ और मन को बड़ी शांति मिलती है।",
+      "rating": 5,
+      "date": "2026-02-18"
+    },
+    {
+      "id": "a6",
+      "name": "विमला देवी",
+      "location": "Udaipur",
+      "text": "इस तरह की वेबसाइट की बहुत ज़रूरत थी। जैन स्तवन अब कहीं भी सुन सकते हैं, बहुत आभारी हूँ।",
+      "rating": 5,
+      "date": "2026-02-25"
+    }
+  ],
+  "socialLinks": {
+    "youtube": "https://youtube.com/@JinVaani",
+    "instagram": "https://instagram.com/JinVaani",
+    "facebook": "https://facebook.com/JinVaani",
+    "whatsapp": "https://wa.me/JinVaani"
+  },
+  "contact": {
+    "email": "contact@jinvaani.com",
+    "instagram": "https://instagram.com/JinVaani"
+  },
+  "navbarLinks": [
+    {
+      "id": "home",
+      "label": "Home",
+      "path": "/"
+    },
+    {
+      "id": "playlists",
+      "label": "Playlists",
+      "path": "/playlists"
+    },
+    {
+      "id": "navkar-mantra",
+      "label": "Navkar Mantra",
+      "path": "/navkar-mantra"
+    },
+    {
+      "id": "katha",
+      "label": "Katha",
+      "path": "/katha"
+    },
+    {
+      "id": "quotes",
+      "label": "Wisdom",
+      "path": "/quotes"
+    },
+    {
+      "id": "anubhav",
+      "label": "Anubhav",
+      "path": "/anubhav"
+    }
+  ],
+  "footerLinks": [
+    {
+      "label": "About Us",
+      "path": "/about"
+    },
+    {
+      "label": "Contact",
+      "path": "/contact"
+    },
+    {
+      "label": "Privacy Policy",
+      "path": "/privacy"
+    },
+    {
+      "label": "Terms & Conditions",
+      "path": "/terms"
+    },
+    {
+      "label": "Disclaimer",
+      "path": "/disclaimer"
+    },
+    {
+      "label": "Copyright / DMCA",
+      "path": "/dmca"
+    },
+    {
+      "label": "Music Content Policy",
+      "path": "/music-policy"
+    }
+  ]
+}
