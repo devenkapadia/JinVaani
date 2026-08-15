@@ -234,23 +234,27 @@ export function MusicPlayerProvider({ children }) {
     try { localStorage.setItem(LS_KEYS.LAST_PLAYLIST_ID, playlist.id); } catch (_) {}
 
     execOrQueue((player) => {
-      player.loadPlaylist({
-        list:        playlist.youtubePlaylistId,
-        listType:    'playlist',
-        index:       0,
-        startSeconds: 0,
-      });
-      if (shuffle) {
-        // setShuffle(true) only shuffles *future* tracks, not the first one.
-        // playVideoAt() after a short delay jumps to a random position once
-        // the playlist has been registered by the API.
-        const randomIndex = Math.floor(Math.random() * 20);
-        setTimeout(() => {
-          try {
-            player.setShuffle(true);
-            player.playVideoAt(randomIndex);
-          } catch (_) {}
-        }, 800);
+      if (playlist.youtubePlaylistId && !playlist.youtubePlaylistId.startsWith('PL')) {
+        player.loadVideoById(playlist.youtubePlaylistId, 0);
+      } else {
+        player.loadPlaylist({
+          list:        playlist.youtubePlaylistId,
+          listType:    'playlist',
+          index:       0,
+          startSeconds: 0,
+        });
+        if (shuffle) {
+          // setShuffle(true) only shuffles *future* tracks, not the first one.
+          // playVideoAt() after a short delay jumps to a random position once
+          // the playlist has been registered by the API.
+          const randomIndex = Math.floor(Math.random() * 20);
+          setTimeout(() => {
+            try {
+              player.setShuffle(true);
+              player.playVideoAt(randomIndex);
+            } catch (_) {}
+          }, 800);
+        }
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
