@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import LiveVisitors from '../components/LiveVisitors';
 import { useMusicPlayer } from '../context/MusicPlayerContext';
@@ -48,8 +48,31 @@ function IconArrow() {
 const allSongsPlaylist =
   data.playlists.find((p) => p.id === 'all-songs') ?? data.playlists[0];
 
+/* ─── Particle data: 120 entries, deterministic pseudo-random values ───────── */
+function buildParticles() {
+  // Seeded LCG — same sequence every render, no Math.random()
+  let seed = 0xdeadbeef;
+  const rng = () => { seed = (seed * 1664525 + 1013904223) & 0xffffffff; return (seed >>> 0) / 0xffffffff; };
+
+  return Array.from({ length: 200 }, (_, i) => ({
+    id: i,
+    x:     `${(rng() * 98 + 1).toFixed(2)}%`,              // 1–99% horizontal
+    // scatter starting height so screen is full on load (not all at bottom)
+    y:     `${(rng() * 110).toFixed(2)}%`,                  // 0–110% from bottom
+    size:  `${(rng() * 3.5 + 1.2).toFixed(2)}px`,           // 1.2–4.7 px
+    dur:   `${(rng() * 12 + 7).toFixed(2)}s`,               // 7–19 s
+    tdur:  `${(rng() * 3  + 1.8).toFixed(2)}s`,             // 1.8–4.8 s twinkle
+    delay: `-${(rng() * 20).toFixed(2)}s`,                  // negative = already in-flight
+    drift: `${(rng() * 70 - 35).toFixed(1)}px`,             // −35 to +35 px sideways
+    ophi:  `${(rng() * 0.45 + 0.50).toFixed(2)}`,           // 0.50–0.95 bright phase
+    oplo:  `${(rng() * 0.18 + 0.04).toFixed(2)}`,           // 0.04–0.22 dim phase
+  }));
+}
+
 export default function Home() {
   const { loadPlaylist, currentPlaylist, isPlaying, isBuffering, togglePlay } = useMusicPlayer();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const particles = useMemo(() => buildParticles(), []);
   const isRadioActive = currentPlaylist?.id === allSongsPlaylist?.id;
   const [showPlaylists, setShowPlaylists] = useState(false);
   const playlistRowRef = useRef(null);
@@ -85,6 +108,38 @@ export default function Home() {
     <div className="home-fullscreen">
       {/* Static full-screen background */}
       <div className="home-bg" aria-hidden="true" />
+
+      {/* Layer 1 — golden particles drifting upward */}
+      <div className="home-particles" aria-hidden="true">
+        {particles.map((p) => (
+          <span
+            key={p.id}
+            className="hp"
+            style={{
+              '--hp-x':     p.x,
+              '--hp-y':     p.y,
+              '--hp-size':  p.size,
+              '--hp-dur':   p.dur,
+              '--hp-tdur':  p.tdur,
+              '--hp-delay': p.delay,
+              '--hp-drift': p.drift,
+              '--hp-ophi':  p.ophi,
+              '--hp-oplo':  p.oplo,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Layer 2 — soft aura glow orbiting the meditating figure.
+          Three nesting levels so orbit and pulse never fight over transform:
+            .home-aura-wrap  → static anchor (no animation)
+            .home-aura-orbit → orbit translate only
+            .home-aura       → pulse scale + opacity only              */}
+      <div className="home-aura-wrap" aria-hidden="true">
+        <div className="home-aura-orbit">
+          <div className="home-aura" />
+        </div>
+      </div>
 
       {/* Centred hero content */}
       <div className="home-center">
