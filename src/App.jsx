@@ -129,24 +129,24 @@ function AppShell() {
               <StaticPage title="About JinVaani">
                 <p>{data.site.description}</p>
                 <p style={{ marginTop: '1.25rem' }}>
-                  JinVaani is built as a peaceful Jain devotional radio experience — one global music player,
+                  JinVaani is built as a peaceful Jain devotional radio experience: one global music player,
                   beautiful devotional backgrounds, and carefully curated spiritual content from the Jain tradition.
                 </p>
               </StaticPage>
             } />
 
             <Route path="/contact" element={
-              <StaticPage title="Contact">
-                <p>Email: <a href={`mailto:${data.contact.email}`} style={{ color: 'var(--color-gold)' }}>{data.contact.email}</a></p>
+              <StaticPage title="Contact Developer">
+                <p>Email: <a href={`mailto:${data.contact.dev_email}`} style={{ color: 'var(--color-gold)' }}>{data.contact.dev_email}</a></p>
                 <p style={{ marginTop: '1rem' }}>
-                  Instagram: <a href={data.contact.instagram} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)' }}>@JinVaani</a>
+                  Instagram: <a href={data.contact.dev_insta} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)' }}>@d.e.v.e.n__</a>
                 </p>
               </StaticPage>
             } />
 
             <Route path="/dmca" element={
               <StaticPage title="Copyright / DMCA">
-                <p>All audio content is sourced via the official YouTube IFrame API. JinVaani does not host, download or redistribute any audio files. For DMCA or copyright requests, contact: <a href={`mailto:${data.contact.email}`} style={{ color: 'var(--color-gold)' }}>{data.contact.email}</a></p>
+                <p>All audio content is sourced via the official YouTube IFrame API. JinVaani does not host, download or redistribute any audio files. For DMCA or copyright requests, contact: <a href={`mailto:${data.contact.dev_email}`} style={{ color: 'var(--color-gold)' }}>{data.contact.dev_email}</a></p>
               </StaticPage>
             } />
 

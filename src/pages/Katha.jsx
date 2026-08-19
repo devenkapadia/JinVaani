@@ -2,13 +2,42 @@ import { useEffect } from 'react';
 import analyticsService from '../services/analyticsService';
 import data from '../data/data.json';
 
+const COMING_SOON_CATEGORIES = [
+  {
+    id: 'divine',
+    icon: '🕉️',
+    title: 'दिव्य कथाएँ',
+    subtitle: 'Divine Stories',
+    desc: 'तीर्थंकरों और महान जैन आत्माओं की दिव्य जीवन-कथाएँ — जो मन को परमात्मा की ओर उन्मुख करती हैं।',
+  },
+  {
+    id: 'tirth',
+    icon: '⛩️',
+    title: 'तीर्थ यात्रा',
+    subtitle: 'Pilgrimage Tales',
+    desc: 'शत्रुंजय, गिरनार, सम्मेद शिखर — पवित्र तीर्थस्थलों की कहानियाँ और उनका आध्यात्मिक महत्व।',
+  },
+  {
+    id: 'siddhant',
+    icon: '📿',
+    title: 'सिद्धांत बोध',
+    subtitle: 'Jain Philosophy',
+    desc: 'अहिंसा, अनेकान्तवाद, अपरिग्रह — जैन दर्शन के मूल सिद्धांतों पर सरल और प्रेरणादायक प्रवचन।',
+  },
+  {
+    id: 'saints',
+    icon: '🙏',
+    title: 'संत-महात्माओं के जीवन',
+    subtitle: 'Lives of Saints',
+    desc: 'जैन परम्परा के महान साधु-साध्वियों के त्याग, तपस्या और करुणा की अनुकरणीय जीवन-गाथाएँ।',
+  },
+];
+
 export default function Katha() {
   useEffect(() => {
-    document.title = `Katha | ${data.site.name}`;
+    document.title = `कथा | ${data.site.name}`;
     analyticsService.pageView('/katha', 'Katha');
   }, []);
-
-  const kathaList = data.katha ?? [];
 
   return (
     <div className="scroll-page" style={{ backgroundImage: "url('/images/katha.jpg')" }}>
@@ -16,62 +45,40 @@ export default function Katha() {
 
         <header className="scroll-page-header">
           <p className="scroll-page-eyebrow">जैन कथाएँ</p>
-          <h1 className="scroll-page-title">Katha & Stories</h1>
+          <h1 className="scroll-page-title katha-coming-title">कथा</h1>
           <p className="scroll-page-sub">Inspiring stories and teachings from the Jain tradition</p>
         </header>
 
-        {kathaList.length === 0 ? (
-          <p className="scroll-page-empty">Katha stories coming soon. Add them to data.json → katha.</p>
-        ) : (
-          <div className="katha-scroll-list">
-            {kathaList.map((k, i) => (
-              <article key={k.id} className="katha-scroll-item" style={{ '--item-index': i }}>
-                <header className="katha-scroll-item-header">
-                  <div className="katha-scroll-item-meta">
-                    <p className="katha-scroll-item-subtitle">{k.subtitle}</p>
-                    {k.date && (
-                      <time className="katha-scroll-item-date" dateTime={k.date}>
-                        {new Date(k.date).toLocaleDateString('hi-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
-                      </time>
-                    )}
-                  </div>
-                  <h2 className="katha-scroll-item-title">{k.title}</h2>
-                </header>
+        {/* Coming Soon hero */}
+        <div className="katha-coming-hero">
+          <span className="katha-coming-badge">✦ शीघ्र आ रहा है ✦</span>
+          <p className="katha-coming-lead">
+            जैन धर्म की दिव्य कथाओं का एक अनूठा संग्रह तैयार किया जा रहा है।<br />
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', opacity: 0.7 }}>
+              A unique collection of divine Jain stories is being curated — coming soon.
+            </span>
+          </p>
+        </div>
 
-                {k.image && (
-                  <img
-                    src={k.image}
-                    alt={k.title}
-                    className="katha-scroll-item-image"
-                    loading="lazy"
-                  />
-                )}
+        {/* Category preview cards */}
+        <div className="katha-coming-grid">
+          {COMING_SOON_CATEGORIES.map((cat) => (
+            <div key={cat.id} className="katha-coming-card">
+              <span className="katha-coming-card-icon" aria-hidden="true">{cat.icon}</span>
+              <div className="katha-coming-card-body">
+                <h2 className="katha-coming-card-title">{cat.title}</h2>
+                <p className="katha-coming-card-subtitle">{cat.subtitle}</p>
+                <p className="katha-coming-card-desc">{cat.desc}</p>
+              </div>
+              <span className="katha-coming-card-pill">Coming Soon</span>
+            </div>
+          ))}
+        </div>
 
-                <p className="katha-scroll-item-excerpt">{k.excerpt}</p>
-
-                {k.content && k.content !== k.excerpt && (
-                  <details className="katha-scroll-item-details">
-                    <summary className="katha-scroll-item-read-more">
-                      <span>पूरी कथा पढ़ें</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </summary>
-                    <p className="katha-scroll-item-content">{k.content}</p>
-                  </details>
-                )}
-
-                {k.tags && k.tags.length > 0 && (
-                  <div className="katha-scroll-item-tags">
-                    {k.tags.map((tag) => (
-                      <span key={tag} className="katha-scroll-item-tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
-              </article>
-            ))}
-          </div>
-        )}
+        {/* Footer note */}
+        <p className="katha-coming-footer">
+          🔔 अधिक जानकारी के लिए हमें Instagram पर फॉलो करें।
+        </p>
 
       </div>
     </div>

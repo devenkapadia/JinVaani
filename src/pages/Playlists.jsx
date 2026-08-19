@@ -48,10 +48,13 @@ function NowPlayingBars() {
   );
 }
 
+const ALL_SONGS_ID = 'all-songs';
+const defaultPlaylist = ALL_PLAYLISTS.find((p) => p.id === ALL_SONGS_ID) ?? ALL_PLAYLISTS[0];
+
 export default function Playlists() {
   const { loadPlaylist, currentPlaylist, isPlaying, isBuffering } = useMusicPlayer();
-  const [selectedId, setSelectedId] = useState(ALL_PLAYLISTS[0]?.id ?? null);
-  const [bgA, setBgA]     = useState(ALL_PLAYLISTS[0]?.heroImage ?? '');
+  const [selectedId, setSelectedId] = useState(defaultPlaylist?.id ?? null);
+  const [bgA, setBgA]     = useState(defaultPlaylist?.heroImage ?? '');
   const [bgB, setBgB]     = useState('');
   const [showB, setShowB] = useState(false);
 

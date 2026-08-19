@@ -28,8 +28,11 @@
   --color-accent:      var(--color-gold);
 
   /* Typography */
-  --font-body:   -apple-system, 'Segoe UI', system-ui, sans-serif;
-  --font-hindi:  'Noto Sans Devanagari', 'Segoe UI', system-ui, sans-serif;
+  --font-body:         -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-hindi:        'Noto Sans Devanagari', 'Segoe UI', system-ui, sans-serif;
+  --font-hindi-round:  'Baloo 2', 'Noto Sans Devanagari', system-ui, sans-serif;   /* rounded, warm */
+  --font-hindi-class:  'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;     /* classical script */
+  --font-hindi-decor:  'Yatra One', 'Noto Sans Devanagari', serif;                 /* bold decorative */
 
   /* Player */
   --player-height:     68px;
@@ -335,7 +338,7 @@ main {
 }
 .scroll-page-eyebrow {
   font-size: 0.7rem;
-  font-family: var(--font-hindi);
+  font-family: var(--font-hindi-round);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold);
@@ -536,7 +539,7 @@ main {
 }
 .katha-scroll-item-title {
   font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-  font-family: var(--font-hindi);
+  font-family: var(--font-hindi-class);
   color: rgba(253,248,238,0.95);
   font-weight: 700;
   line-height: 1.4;
@@ -597,6 +600,162 @@ details[open] .katha-scroll-item-read-more svg { transform: rotate(180deg); }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-gold-dim);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   KATHA — COMING SOON styles
+───────────────────────────────────────────────────────────────── */
+.katha-coming-title {
+  font-family: var(--font-hindi-decor);
+  letter-spacing: 0.02em;
+}
+
+.katha-coming-hero {
+  text-align: center;
+  padding: 2rem 1.5rem 2.5rem;
+  background: rgba(10,5,1,0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,146,42,0.18);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2.5rem;
+}
+.katha-coming-badge {
+  display: inline-block;
+  font-family: var(--font-hindi-round);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+  border: 1px solid rgba(201,146,42,0.3);
+  border-radius: 50px;
+  padding: 4px 16px;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+.katha-coming-lead {
+  font-family: var(--font-hindi-class);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(240,228,205,0.88);
+  line-height: 1.85;
+}
+
+.katha-coming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.katha-coming-card {
+  position: relative;
+  background: rgba(10,5,1,0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,146,42,0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.5rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color var(--transition-mid);
+}
+.katha-coming-card:hover {
+  border-color: rgba(201,146,42,0.3);
+}
+.katha-coming-card-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.katha-coming-card-body {
+  flex: 1;
+}
+.katha-coming-card-title {
+  font-family: var(--font-hindi-class);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(253,248,238,0.95);
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+}
+.katha-coming-card-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.8;
+  margin-bottom: 0.6rem;
+}
+.katha-coming-card-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  color: rgba(220,205,175,0.78);
+  line-height: 1.8;
+}
+.katha-coming-card-pill {
+  align-self: flex-start;
+  padding: 3px 10px;
+  background: rgba(201,146,42,0.12);
+  border: 1px solid rgba(201,146,42,0.22);
+  border-radius: 20px;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-dim);
+}
+.katha-coming-footer {
+  text-align: center;
+  font-family: var(--font-hindi-round);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ANUBHAV — Share CTA + Instagram button
+───────────────────────────────────────────────────────────────── */
+.anubhav-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  background: rgba(10,5,1,0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201,146,42,0.18);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  margin-bottom: 2.5rem;
+}
+.anubhav-cta-text {
+  font-family: var(--font-hindi-round);
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  color: rgba(240,228,205,0.88);
+  line-height: 1.85;
+}
+.anubhav-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(135deg, #d62976 0%, #fa7e1e 50%, #feda75 100%);
+  border-radius: 50px;
+  font-family: var(--font-hindi-round);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 4px 18px rgba(214,41,118,0.35);
+}
+.anubhav-ig-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.04);
+  text-decoration: none;
+}
+.anubhav-ig-btn:active {
+  transform: scale(0.97);
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -928,7 +1087,7 @@ body:has(.pl-page) { overflow: hidden; }
 }
 .pl-detail-title {
   font-size: clamp(2.2rem, 6vw, 3.8rem);
-  font-family: var(--font-hindi);
+  font-family: var(--font-hindi-decor);
   font-weight: 800;
   color: rgba(253,248,238,0.97);
   line-height: 1.1;
@@ -1090,7 +1249,7 @@ body:has(.nk-page) { overflow: hidden; }
 }
 .nk-title {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-family: var(--font-hindi);
+  font-family: var(--font-hindi-decor);
   font-weight: 800;
   color: rgba(253,248,238,0.97);
   line-height: 1.2;
@@ -1250,15 +1409,16 @@ body:has(.home-fullscreen) { overflow: hidden; }
 .home-logo {
   font-size: clamp(2.4rem, 8vw, 4.5rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--color-cream);
   text-shadow: 0 2px 24px rgba(0,0,0,0.5);
   line-height: 1;
   margin-bottom: 0.4rem;
+  font-family: var(--font-hindi-decor);
 }
 .home-tagline {
   font-size: clamp(0.8rem, 2.2vw, 1rem);
-  font-family: var(--font-hindi);
+  font-family: var(--font-hindi-round);
   color: rgba(220,200,165,0.75);
   letter-spacing: 0.08em;
 }

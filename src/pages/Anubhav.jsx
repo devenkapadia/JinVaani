@@ -15,9 +15,20 @@ function Stars({ count = 5 }) {
   );
 }
 
+// Instagram icon SVG
+function IGIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default function Anubhav() {
   useEffect(() => {
-    document.title = `Anubhav | ${data.site.name}`;
+    document.title = `अनुभव | ${data.site.name}`;
     analyticsService.pageView('/anubhav', 'Anubhav');
   }, []);
 
@@ -27,9 +38,30 @@ export default function Anubhav() {
 
         <header className="scroll-page-header">
           <p className="scroll-page-eyebrow">अनुभव</p>
-          <h1 className="scroll-page-title">Listener Experiences</h1>
+          <h1 className="scroll-page-title">श्रोताओं के अनुभव</h1>
           <p className="scroll-page-sub">Real experiences from our devotees</p>
         </header>
+
+        {/* Share CTA */}
+        <div className="anubhav-cta">
+          <p className="anubhav-cta-text">
+            क्या आपने भी जिनवाणी सुनकर कुछ अनुभव किया? अपना अनुभव हमारे साथ साझा करें।<br />
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.82rem', opacity: 0.7 }}>
+              Listened to JinVaani? Share your experience with us!
+            </span>
+          </p>
+          <a
+            href={data.contact.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="anubhav-ig-btn"
+            aria-label="Share your experience via Instagram DM"
+          >
+            <IGIcon />
+            <span>अपना अनुभव लिखें</span>
+            <span style={{ fontSize: '0.72rem', opacity: 0.75, letterSpacing: '0.04em' }}>Instagram DM</span>
+          </a>
+        </div>
 
         {data.anubhav.length === 0 ? (
           <p className="scroll-page-empty">Experiences coming soon. Add entries to data.json → anubhav.</p>
