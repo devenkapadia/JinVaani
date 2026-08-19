@@ -168,9 +168,9 @@ export default function Home() {
         <p className="home-play-label">जिन भक्ति</p>
 
         {/* Live visitors */}
-        {/* <div className="home-visitors">
+        <div className="home-visitors">
           <LiveVisitors dark />
-        </div> */}
+        </div>
       </div>
 
       {/* Bottom quick-nav */}

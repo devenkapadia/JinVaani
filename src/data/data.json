@@ -1,13 +1,13 @@
 {
   "site": {
-    "name": "JinVaani",
+    "name": "जिनवाणी",
     "tagline": "जिन भक्ति के मधुर स्वर",
     "description": "JinVaani – A peaceful Jain devotional radio streaming the finest stavans, bhajans, mantras and spiritual content. Immerse yourself in the divine music of the Jain tradition.",
     "year": 2026,
     "domain": "jinvaani.com"
   },
   "seo": {
-    "defaultTitle": "JinVaani – जिन भक्ति के मधुर स्वर",
+    "defaultTitle": "JinVaani - जिन भक्ति के मधुर स्वर",
     "titleTemplate": "%s | JinVaani",
     "defaultDescription": "Listen to beautiful Jain stavans, bhajans, mantras and devotional music on JinVaani. प्रातः स्तवन, संध्या स्तवन, त्योहार विशेष।",
     "ogImage": "/images/og-default.jpg",
@@ -18,12 +18,15 @@
     "enabled": false
   },
   "visitorCounter": {
-    "provider": "mock",
+    "provider": "firebase",
     "firebaseConfig": {
-      "apiKey": "REPLACE_WITH_FIREBASE_API_KEY",
-      "authDomain": "REPLACE_WITH_FIREBASE_AUTH_DOMAIN",
-      "databaseURL": "REPLACE_WITH_FIREBASE_DATABASE_URL",
-      "projectId": "REPLACE_WITH_FIREBASE_PROJECT_ID"
+      "apiKey": "AIzaSyBVAe791OwY2VE0wABjYRp1ghEUgA11McE",
+      "authDomain": "jinvaani-95edf.firebaseapp.com",
+      "databaseURL": "https://jinvaani-95edf-default-rtdb.asia-southeast1.firebasedatabase.app",
+      "projectId": "jinvaani-95edf",
+      "storageBucket": "jinvaani-95edf.firebasestorage.app",
+      "messagingSenderId": "659455286263",
+      "appId": "1:659455286263:web:1bf578f81c9680244b6cf2"
     }
   },
   "playlists": [
@@ -65,14 +68,14 @@
       "id": "all-songs",
       "title": "सभी गीत",
       "subtitle": "All Songs",
-      "description": "JinVaani के सम्पूर्ण संग्रह से सभी स्तवन, भजन और मंत्रों को एक स्थान पर सुनें। नवीन और पुरातन, दोनों प्रकार की दिव्य रचनाएँ यहाँ उपलब्ध हैं।",
+      "description": "जिनवाणी के सम्पूर्ण संग्रह से सभी स्तवन, भजन और मंत्रों को एक स्थान पर सुनें। नवीन और पुरातन, दोनों प्रकार की दिव्य रचनाएँ यहाँ उपलब्ध हैं।",
       "category": "all",
       "youtubePlaylistId": "PL_Iz6Tqlp259KfRw9Hn7CN2PgoT5Vc5Ni",
-      "heroImage": "/images/playlist-morning.jpg",
+      "heroImage": "/images/derasar.png",
       "backgroundImages": [
+        "/images/derasar.png",
         "/images/playlist-morning.jpg",
-        "/images/playlist-evening.jpg",
-        "/images/morning-4.jpg"
+        "/images/playlist-evening.jpg"
       ],
       "color": "#34d399",
       "featured": false,
@@ -287,65 +290,15 @@
       ]
     }
   ],
-  "anubhav": [
-    {
-      "id": "a1",
-      "name": "प्रिया शाह",
-      "location": "Ahmedabad",
-      "text": "JinVaani ने मेरे सुबह की शुरुआत को बदल दिया। प्रातः स्तवन सुनकर दिन बहुत अच्छा जाता है।",
-      "rating": 5,
-      "date": "2026-01-15"
-    },
-    {
-      "id": "a2",
-      "name": "राजेश जैन",
-      "location": "Jaipur",
-      "text": "सिद्धगिरी के शिखरो बोले – यह रचना सुनकर मन को अद्भुत शांति मिलती है। धन्यवाद JinVaani।",
-      "rating": 5,
-      "date": "2026-01-20"
-    },
-    {
-      "id": "a3",
-      "name": "सुनीता मेहता",
-      "location": "Mumbai",
-      "text": "त्योहार विशेष playlist पर्युषण के दौरान बहुत काम आई। हर भजन बेहद सुंदर है।",
-      "rating": 5,
-      "date": "2026-02-01"
-    },
-    {
-      "id": "a4",
-      "name": "अनिल कुमार जैन",
-      "location": "Surat",
-      "text": "संध्या स्तवन सुनकर दिन की थकान दूर हो जाती है। यह वेबसाइट जैन समाज के लिए एक अमूल्य उपहार है।",
-      "rating": 5,
-      "date": "2026-02-10"
-    },
-    {
-      "id": "a5",
-      "name": "मीना बोहरा",
-      "location": "Jodhpur",
-      "text": "नवकार मंत्र की प्रस्तुति अत्यंत मनमोहक है। रोज़ सुनती हूँ और मन को बड़ी शांति मिलती है।",
-      "rating": 5,
-      "date": "2026-02-18"
-    },
-    {
-      "id": "a6",
-      "name": "विमला देवी",
-      "location": "Udaipur",
-      "text": "इस तरह की वेबसाइट की बहुत ज़रूरत थी। जैन स्तवन अब कहीं भी सुन सकते हैं, बहुत आभारी हूँ।",
-      "rating": 5,
-      "date": "2026-02-25"
-    }
-  ],
+  "anubhav": [],
   "socialLinks": {
-    "youtube": "https://youtube.com/@JinVaani",
-    "instagram": "https://instagram.com/JinVaani",
-    "facebook": "https://facebook.com/JinVaani",
-    "whatsapp": "https://wa.me/JinVaani"
+    "youtube": "https://www.youtube.com/@namramehta5191",
+    "instagram": "https://instagram.com/stavansbynamra",
+    "facebook": "https://www.facebook.com/namra.mehta.3",
   },
   "contact": {
-    "email": "contact@jinvaani.com",
-    "instagram": "https://instagram.com/JinVaani"
+    "dev_email":"devenkapadia1@gmail.com",
+    "dev_insta":"https://instagram.com/d.e.v.e.n__"
   },
   "navbarLinks": [
     {
@@ -395,10 +348,6 @@
     {
       "label": "Terms & Conditions",
       "path": "/terms"
-    },
-    {
-      "label": "Disclaimer",
-      "path": "/disclaimer"
     },
     {
       "label": "Copyright / DMCA",
