@@ -18,16 +18,7 @@
     "enabled": false
   },
   "visitorCounter": {
-    "provider": "firebase",
-    "firebaseConfig": {
-      "apiKey": "AIzaSyBVAe791OwY2VE0wABjYRp1ghEUgA11McE",
-      "authDomain": "jinvaani-95edf.firebaseapp.com",
-      "databaseURL": "https://jinvaani-95edf-default-rtdb.asia-southeast1.firebasedatabase.app",
-      "projectId": "jinvaani-95edf",
-      "storageBucket": "jinvaani-95edf.firebasestorage.app",
-      "messagingSenderId": "659455286263",
-      "appId": "1:659455286263:web:1bf578f81c9680244b6cf2"
-    }
+    "provider": "firebase"
   },
   "playlists": [
     {
