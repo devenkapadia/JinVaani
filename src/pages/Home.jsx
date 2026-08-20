@@ -157,6 +157,19 @@ export default function Home() {
         </div>
       )}
 
+      {/* Attribution */}
+      <p className="home-attribution">
+        An initiative by{" "}
+        <a
+          href={data.socialLinks.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="home-attribution-link"
+        >
+          @stavansbynamra
+        </a>
+      </p>
+
       {/* Bottom quick-nav */}
       <div className="home-bottom-bar">
         {/* Playlist tiles toggle */}
