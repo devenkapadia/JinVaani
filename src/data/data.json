@@ -18,7 +18,7 @@
     "modalTitle": "JinSevaa",
     "modalEmoji": "🙏",
     "modalBody": "Jinvaani is a free, ad-free platform dedicated to spreading the light of Jain devotion. If this content has brought peace or inspiration to your life, consider supporting us — every contribution, big or small, helps keep this seva alive.",
-    "qrPlaceholder": "QR coming soon",
+    "qrImage": "/images/qr.jpeg",
     "qrNote": "Scan to contribute · UPI / bank details will appear here"
   },
   "analytics": {
@@ -52,7 +52,7 @@
       "subtitle": "Evening Stuti",
       "description": "संध्याकाल की मनोरम बेला में जिन भक्ति के मधुर स्वरों के साथ अपने दिन को समाप्त करें। शाम की शांति में ये स्तवन आत्मा को सुकून देते हैं।",
       "category": "stavans",
-      "youtubePlaylistId": "eU1r_QOkX-I",
+      "youtubePlaylistId": "PLId-v0yvOvNY",
       "heroImage": "/images/playlist-evening.jpg",
       "backgroundImages": [
         "/images/playlist-evening.jpg",
