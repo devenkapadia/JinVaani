@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import data from '../data/data.json';
+import LiveVisitors from './LiveVisitors';
 
 const NAV_ITEMS = data.navbarLinks;
 const SOCIAL    = data.socialLinks || {};
@@ -75,7 +76,8 @@ export default function SideMenu() {
       {/* ── Hamburger menu (top-left) ─────────────────────────── */}
       <div ref={menuRef} className="sidemenu-anchor sidemenu-left">
 
-        {/* Burger button */}
+        {/* Burger + live visitors inline row */}
+        <div className="sidemenu-top-row">
         <button
           className="sidemenu-burger"
           onClick={() => { setOpen(v => !v); setInfoOpen(false); }}
@@ -87,6 +89,8 @@ export default function SideMenu() {
           <span className={`burger-line${open ? ' open-1' : ''}`} />
           <span className={`burger-line${open ? ' open-2' : ''}`} />
         </button>
+        <LiveVisitors />
+        </div>
 
         {/* Slide-down nav panel */}
         <nav
