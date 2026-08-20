@@ -21,14 +21,6 @@ function IconPlay() {
     </svg>
   );
 }
-function IconPause() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <rect x="5" y="4" width="4" height="16" rx="1.5" />
-      <rect x="15" y="4" width="4" height="16" rx="1.5" />
-    </svg>
-  );
-}
 function IconBuffer() {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"
@@ -114,15 +106,17 @@ export default function NavkarMantra() {
           <h1 className="nk-title">{navkarTrack.title}</h1>
           <p className="nk-subtitle">{navkarTrack.subtitle}</p>
 
-          {/* Play button */}
-          <button
-            className="nk-play-btn"
-            onClick={handlePlay}
-            aria-label={isCurrentTrack && isPlaying ? 'Pause' : 'Play Navkar Mantra'}
-            disabled={hasPlaceholder}
-          >
-            {isBuffering && isCurrentTrack ? <IconBuffer /> : isCurrentTrack && isPlaying ? <IconPause /> : <IconPlay />}
-          </button>
+          {/* Play button — vanishes once the track is loaded into the player */}
+          {!isCurrentTrack && (
+            <button
+              className="nk-play-btn"
+              onClick={handlePlay}
+              aria-label="Play Navkar Mantra"
+              disabled={hasPlaceholder}
+            >
+              {isBuffering ? <IconBuffer /> : <IconPlay />}
+            </button>
+          )}
 
           {/* Duration hint before playing */}
           {!isCurrentTrack && (
