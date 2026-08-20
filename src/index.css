@@ -101,6 +101,19 @@ main {
 .sidemenu-left  { left: 1.25rem; }
 .sidemenu-right { right: 1.25rem; }
 
+/* Burger + live-visitors row */
+.sidemenu-top-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+/* Compact the badge when it sits in the top bar */
+.sidemenu-top-row .live-visitors {
+  font-size: 0.68rem;
+  padding: 4px 9px;
+  gap: 0.28rem;
+}
+
 /* Burger button */
 .sidemenu-burger {
   display: flex;
@@ -1393,7 +1406,7 @@ body:has(.home-fullscreen) { overflow: hidden; }
 }
 
 /* Centred hero — shifted upward from vertical centre.
-   clamp prevents the title from being clipped on short-screen laptops. */
+   min() prevents clipping on short-screen laptops. */
 .home-center {
   position: relative;
   z-index: 10;
@@ -1401,14 +1414,63 @@ body:has(.home-fullscreen) { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transform: translateY(min(-8rem, -12vh));
+  transform: translateY(min(-6rem, -10vh));
   gap: 0;
 }
 .home-brand {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
 }
+
+/* Bottom start bar — occupies the exact same fixed slot as the music player */
+.home-start-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--player-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,5,1,0.72);
+  border-top: 1px solid rgba(201,146,42,0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 100;
+}
+
+/* Start-playing CTA button inside the bar */
+.home-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 2rem;
+  background: var(--color-gold);
+  color: #0d0600;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 4px 28px rgba(201,146,42,0.45);
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  animation: hsbPulse 2.4s ease-in-out infinite;
+}
+.home-start-btn:hover {
+  background: var(--color-gold-light);
+  transform: scale(1.04);
+  box-shadow: 0 6px 36px rgba(232,184,75,0.55);
+  animation: none;
+}
+.home-start-btn:active { transform: scale(0.96); animation: none; }
+@keyframes hsbPulse {
+  0%, 100% { box-shadow: 0 4px 28px rgba(201,146,42,0.45); }
+  50%       { box-shadow: 0 4px 42px rgba(232,184,75,0.70); }
+}
+
 .home-logo {
-  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  font-size: clamp(11rem, 8vw, 4.5rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   color: var(--color-cream);
@@ -1423,43 +1485,6 @@ body:has(.home-fullscreen) { overflow: hidden; }
   color: rgba(220,200,165,0.75);
   letter-spacing: 0.08em;
 }
-
-/* Big play button */
-.home-play-btn {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  color: #0d0600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 0.85rem;
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 4px 28px rgba(201,146,42,0.40);
-}
-.home-play-btn:hover {
-  background: var(--color-gold-light);
-  transform: scale(1.06);
-  box-shadow: 0 6px 32px rgba(232,184,75,0.50);
-}
-.home-play-btn:active { transform: scale(0.94); }
-
-.home-play-label {
-  font-size: 0.76rem;
-  font-family: var(--font-hindi);
-  color: rgba(200,185,160,0.65);
-  letter-spacing: 0.04em;
-  margin-bottom: 0.85rem;
-  max-width: 220px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.home-visitors { margin-bottom: 0; }
 
 /* Bottom quick-nav bar */
 .home-bottom-bar {
@@ -1744,18 +1769,26 @@ body:has(.home-fullscreen) { overflow: hidden; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ─────────────────────────────────────────────────────────────────
-   HOME PAGE — WhatsApp channel button (bottom-left corner)
+   HOME PAGE — Social buttons (WhatsApp + Instagram), bottom-left
 ───────────────────────────────────────────────────────────────── */
-.home-wa-btn {
+.home-social-btns {
   position: fixed;
   bottom: calc(var(--player-height) + 0.85rem);
   left: 1.25rem;
   z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+/* Shared pill base */
+.home-wa-btn,
+.home-ig-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   padding: 0.55rem 1.1rem;
-  background: #25d366;
   border-radius: 50px;
   font-family: var(--font-hindi-round);
   font-size: 0.76rem;
@@ -1763,16 +1796,25 @@ body:has(.home-fullscreen) { overflow: hidden; }
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.01em;
-  box-shadow: 0 4px 18px rgba(37,211,102,0.35);
   transition: filter var(--transition-fast), transform var(--transition-fast);
   white-space: nowrap;
 }
-.home-wa-btn:hover {
+.home-wa-btn {
+  background: #25d366;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.35);
+}
+.home-ig-btn {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  box-shadow: 0 4px 18px rgba(214,36,159,0.35);
+}
+.home-wa-btn:hover,
+.home-ig-btn:hover {
   filter: brightness(1.1);
   transform: scale(1.04);
   text-decoration: none;
 }
-.home-wa-btn:active { transform: scale(0.97); }
+.home-wa-btn:active,
+.home-ig-btn:active { transform: scale(0.97); }
 
 /* ─────────────────────────────────────────────────────────────────
    HOME PAGE — Support / Donate modal trigger (bottom-right corner)
@@ -1867,19 +1909,14 @@ body:has(.home-fullscreen) { overflow: hidden; }
   margin-bottom: 1.4rem;
 }
 .support-modal-qr {
-  width: 160px;
-  height: 160px;
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
   margin: 0 auto 1.25rem;
   border-radius: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 1px dashed rgba(201,146,42,0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(200,185,160,0.4);
-  font-size: 0.75rem;
-  font-family: var(--font-hindi-round);
-  letter-spacing: 0.04em;
+  background: #fff;
+  padding: 8px;
 }
 .support-modal-note {
   font-size: 0.72rem;
@@ -1899,7 +1936,8 @@ body:has(.home-fullscreen) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .hp,
   .home-aura-wrap,
-  .home-aura { animation: none !important; }
+  .home-aura,
+  .home-start-btn { animation: none !important; }
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -1952,7 +1990,6 @@ body:has(.home-fullscreen) { overflow: hidden; }
     gap: 0.35rem;
   }
   .home-hint-btn { font-size: 0.65rem; padding: 2px 4px; }
-  .home-play-btn { width: 60px; height: 60px; }
   .home-logo { font-size: clamp(2rem, 10vw, 3rem); }
 
   /* Playlists */
