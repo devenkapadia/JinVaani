@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import LiveVisitors from '../components/LiveVisitors';
-import { useMusicPlayer } from '../context/MusicPlayerContext';
-import analyticsService from '../services/analyticsService';
-import data from '../data/data.json';
+import { useEffect, useState, useRef, useMemo } from "react";
+import { Link } from "react-router-dom";
+import LiveVisitors from "../components/LiveVisitors";
+import { useMusicPlayer } from "../context/MusicPlayerContext";
+import analyticsService from "../services/analyticsService";
+import data from "../data/data.json";
 
 const featuredPlaylists = data.playlists
   .filter((p) => p.featured)
@@ -12,14 +12,26 @@ const featuredPlaylists = data.playlists
 // SVG Play icon
 function IconPlay({ size = 28 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
       <path d="M6 4.5L20 12 6 19.5V4.5z" />
     </svg>
   );
 }
 function IconPause({ size = 28 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
       <rect x="5" y="4" width="4" height="16" rx="1.5" />
       <rect x="15" y="4" width="4" height="16" rx="1.5" />
     </svg>
@@ -27,8 +39,16 @@ function IconPause({ size = 28 }) {
 }
 function IconSpinner({ size = 28 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-      style={{ animation: 'spin 1s linear infinite' }} aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      style={{ animation: "spin 1s linear infinite" }}
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="9" strokeOpacity="0.3" />
       <path d="M12 3a9 9 0 019 9" strokeLinecap="round" />
     </svg>
@@ -38,7 +58,17 @@ function IconSpinner({ size = 28 }) {
 // Small arrow for playlist tiles
 function IconArrow() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   );
@@ -46,51 +76,67 @@ function IconArrow() {
 
 // Pick the "all-songs" playlist (has a real playlist ID); fall back to first playlist
 const allSongsPlaylist =
-  data.playlists.find((p) => p.id === 'all-songs') ?? data.playlists[0];
+  data.playlists.find((p) => p.id === "all-songs") ?? data.playlists[0];
 
 /* ─── Particle data: 120 entries, deterministic pseudo-random values ───────── */
 function buildParticles() {
   // Seeded LCG — same sequence every render, no Math.random()
   let seed = 0xdeadbeef;
-  const rng = () => { seed = (seed * 1664525 + 1013904223) & 0xffffffff; return (seed >>> 0) / 0xffffffff; };
+  const rng = () => {
+    seed = (seed * 1664525 + 1013904223) & 0xffffffff;
+    return (seed >>> 0) / 0xffffffff;
+  };
 
   return Array.from({ length: 200 }, (_, i) => ({
     id: i,
-    x:     `${(rng() * 98 + 1).toFixed(2)}%`,              // 1–99% horizontal
+    x: `${(rng() * 98 + 1).toFixed(2)}%`, // 1–99% horizontal
     // scatter starting height so screen is full on load (not all at bottom)
-    y:     `${(rng() * 110).toFixed(2)}%`,                  // 0–110% from bottom
-    size:  `${(rng() * 3.5 + 1.2).toFixed(2)}px`,           // 1.2–4.7 px
-    dur:   `${(rng() * 12 + 7).toFixed(2)}s`,               // 7–19 s
-    tdur:  `${(rng() * 3  + 1.8).toFixed(2)}s`,             // 1.8–4.8 s twinkle
-    delay: `-${(rng() * 20).toFixed(2)}s`,                  // negative = already in-flight
-    drift: `${(rng() * 70 - 35).toFixed(1)}px`,             // −35 to +35 px sideways
-    ophi:  `${(rng() * 0.45 + 0.50).toFixed(2)}`,           // 0.50–0.95 bright phase
-    oplo:  `${(rng() * 0.18 + 0.04).toFixed(2)}`,           // 0.04–0.22 dim phase
+    y: `${(rng() * 110).toFixed(2)}%`, // 0–110% from bottom
+    size: `${(rng() * 3.5 + 1.2).toFixed(2)}px`, // 1.2–4.7 px
+    dur: `${(rng() * 12 + 7).toFixed(2)}s`, // 7–19 s
+    tdur: `${(rng() * 3 + 1.8).toFixed(2)}s`, // 1.8–4.8 s twinkle
+    delay: `-${(rng() * 20).toFixed(2)}s`, // negative = already in-flight
+    drift: `${(rng() * 70 - 35).toFixed(1)}px`, // −35 to +35 px sideways
+    ophi: `${(rng() * 0.45 + 0.5).toFixed(2)}`, // 0.50–0.95 bright phase
+    oplo: `${(rng() * 0.18 + 0.04).toFixed(2)}`, // 0.04–0.22 dim phase
   }));
 }
 
 export default function Home() {
-  const { loadPlaylist, currentPlaylist, isPlaying, isBuffering, togglePlay } = useMusicPlayer();
+  const { loadPlaylist, currentPlaylist, isPlaying, isBuffering, togglePlay } =
+    useMusicPlayer();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const particles = useMemo(() => buildParticles(), []);
   const isRadioActive = currentPlaylist?.id === allSongsPlaylist?.id;
   const [showPlaylists, setShowPlaylists] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
   const playlistRowRef = useRef(null);
   useEffect(() => {
     document.title = data.seo.defaultTitle;
-    analyticsService.pageView('/', 'Home');
+    analyticsService.pageView("/", "Home");
   }, []);
+
+  // Close support modal on Escape
+  useEffect(() => {
+    if (!showSupport) return;
+    const handler = (e) => { if (e.key === "Escape") setShowSupport(false); };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [showSupport]);
 
   // Close playlist row on outside click
   useEffect(() => {
     if (!showPlaylists) return;
     const handler = (e) => {
-      if (playlistRowRef.current && !playlistRowRef.current.contains(e.target)) {
+      if (
+        playlistRowRef.current &&
+        !playlistRowRef.current.contains(e.target)
+      ) {
         setShowPlaylists(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, [showPlaylists]);
 
   function handleRadioPlay() {
@@ -100,7 +146,7 @@ export default function Home() {
     } else {
       // Use YouTube's built-in shuffle so we never exceed the playlist length
       loadPlaylist(allSongsPlaylist, { shuffle: true });
-      analyticsService.pageView('/', 'Home – Random Play');
+      analyticsService.pageView("/", "Home – Random Play");
     }
   }
 
@@ -116,15 +162,15 @@ export default function Home() {
             key={p.id}
             className="hp"
             style={{
-              '--hp-x':     p.x,
-              '--hp-y':     p.y,
-              '--hp-size':  p.size,
-              '--hp-dur':   p.dur,
-              '--hp-tdur':  p.tdur,
-              '--hp-delay': p.delay,
-              '--hp-drift': p.drift,
-              '--hp-ophi':  p.ophi,
-              '--hp-oplo':  p.oplo,
+              "--hp-x": p.x,
+              "--hp-y": p.y,
+              "--hp-size": p.size,
+              "--hp-dur": p.dur,
+              "--hp-tdur": p.tdur,
+              "--hp-delay": p.delay,
+              "--hp-drift": p.drift,
+              "--hp-ophi": p.ophi,
+              "--hp-oplo": p.oplo,
             }}
           />
         ))}
@@ -143,7 +189,6 @@ export default function Home() {
 
       {/* Centred hero content */}
       <div className="home-center">
-
         {/* Brand */}
         <div className="home-brand">
           <h1 className="home-logo">{data.site.name}</h1>
@@ -154,14 +199,20 @@ export default function Home() {
         <button
           className="home-play-btn"
           onClick={handleRadioPlay}
-          aria-label={isRadioActive && isPlaying ? 'Pause' : 'Play a random devotional song'}
+          aria-label={
+            isRadioActive && isPlaying
+              ? "Pause"
+              : "Play a random devotional song"
+          }
           title="Play a random Jain devotional song"
         >
-          {isBuffering && isRadioActive
-            ? <IconSpinner size={30} />
-            : isRadioActive && isPlaying
-              ? <IconPause size={30} />
-              : <IconPlay size={30} />}
+          {isBuffering && isRadioActive ? (
+            <IconSpinner size={30} />
+          ) : isRadioActive && isPlaying ? (
+            <IconPause size={30} />
+          ) : (
+            <IconPlay size={30} />
+          )}
         </button>
 
         {/* Label below button */}
@@ -182,7 +233,16 @@ export default function Home() {
             onClick={() => setShowPlaylists((v) => !v)}
             aria-expanded={showPlaylists}
           >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
               <path d="M9 18V5l12-2v13" />
               <circle cx="6" cy="18" r="3" />
               <circle cx="18" cy="16" r="3" />
@@ -191,18 +251,22 @@ export default function Home() {
           </button>
 
           {/* Expandable playlist tiles */}
-          <div className={`home-playlist-row${showPlaylists ? ' visible' : ''}`}>
+          <div
+            className={`home-playlist-row${showPlaylists ? " visible" : ""}`}
+          >
             {featuredPlaylists.map((pl) => (
               <Link
                 key={pl.id}
                 to="/playlists"
                 className="home-playlist-tile"
-                style={{ '--tile-color': pl.color }}
+                style={{ "--tile-color": pl.color }}
                 title={pl.subtitle}
                 onClick={() => setShowPlaylists(false)}
               >
                 <span className="home-playlist-name">{pl.subtitle}</span>
-                <span className="home-playlist-arrow"><IconArrow /></span>
+                <span className="home-playlist-arrow">
+                  <IconArrow />
+                </span>
               </Link>
             ))}
             <Link
@@ -211,39 +275,132 @@ export default function Home() {
               onClick={() => setShowPlaylists(false)}
             >
               <span className="home-playlist-name">All Songs</span>
-              <span className="home-playlist-arrow"><IconArrow /></span>
+              <span className="home-playlist-arrow">
+                <IconArrow />
+              </span>
             </Link>
           </div>
         </div>
 
-        <span className="home-hint-sep" aria-hidden="true">·</span>
+        <span className="home-hint-sep" aria-hidden="true">
+          ·
+        </span>
 
         <Link to="/quotes" className="home-hint-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
           </svg>
           Wisdom
         </Link>
 
-        <span className="home-hint-sep" aria-hidden="true">·</span>
+        <span className="home-hint-sep" aria-hidden="true">
+          ·
+        </span>
 
         <Link to="/navkar-mantra" className="home-hint-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <circle cx="12" cy="12" r="10" />
             <path d="M12 8v4l2 2" />
           </svg>
           Navkar
         </Link>
 
-        <span className="home-hint-sep" aria-hidden="true">·</span>
+        <span className="home-hint-sep" aria-hidden="true">
+          ·
+        </span>
 
         <Link to="/anubhav" className="home-hint-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
           </svg>
           Anubhav
         </Link>
       </div>
+      {/* WhatsApp channel — bottom-left */}
+      <a
+        href="https://whatsapp.com/channel/0029VbDA1mTEFeXpV1Sm4m26"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="home-wa-btn"
+        aria-label="Join our WhatsApp channel for Jain devotional content"
+      >
+        {/* WhatsApp icon */}
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.854L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.006-1.371l-.36-.214-3.76.896.952-3.658-.235-.374A9.812 9.812 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+        </svg>
+        Join Jain Channel
+      </a>
+
+      {/* Support button — bottom-right */}
+      <button
+        className="home-support-btn"
+        onClick={() => setShowSupport(true)}
+        aria-label="Support Jinvaani"
+      >
+        {/* Heart icon */}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        {data.jinsevaa.buttonLabel}
+      </button>
+
+      {/* JinSevaa modal */}
+      {showSupport && (
+        <div
+          className="support-modal-overlay"
+          onClick={(e) => { if (e.target === e.currentTarget) setShowSupport(false); }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={data.jinsevaa.modalTitle}
+        >
+          <div className="support-modal">
+            <button
+              className="support-modal-close"
+              onClick={() => setShowSupport(false)}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+            <div className="support-modal-emoji">{data.jinsevaa.modalEmoji}</div>
+            <h2 className="support-modal-title">{data.jinsevaa.modalTitle}</h2>
+            <p className="support-modal-body">{data.jinsevaa.modalBody}</p>
+            {/* QR placeholder — swap this div with <img> once you have the actual QR */}
+            <div className="support-modal-qr" aria-label="Payment QR code — coming soon">
+              {data.jinsevaa.qrPlaceholder}
+            </div>
+            <p className="support-modal-note">{data.jinsevaa.qrNote}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
