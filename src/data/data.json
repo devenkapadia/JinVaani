@@ -13,6 +13,14 @@
     "ogImage": "/images/og-default.jpg",
     "twitterHandle": "@JinVaani"
   },
+  "jinsevaa": {
+    "buttonLabel": "JinSevaa",
+    "modalTitle": "JinSevaa",
+    "modalEmoji": "🙏",
+    "modalBody": "Jinvaani is a free, ad-free platform dedicated to spreading the light of Jain devotion. If this content has brought peace or inspiration to your life, consider supporting us — every contribution, big or small, helps keep this seva alive.",
+    "qrPlaceholder": "QR coming soon",
+    "qrNote": "Scan to contribute · UPI / bank details will appear here"
+  },
   "analytics": {
     "ga4MeasurementId": "REPLACE_WITH_GA4_ID",
     "enabled": false
