@@ -1470,7 +1470,7 @@ body:has(.home-fullscreen) { overflow: hidden; }
 }
 
 .home-logo {
-  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-size: clamp(11rem, 8vw, 4.5rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   color: var(--color-cream);
