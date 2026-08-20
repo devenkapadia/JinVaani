@@ -1392,7 +1392,8 @@ body:has(.home-fullscreen) { overflow: hidden; }
   );
 }
 
-/* Centred hero — shifted upward from vertical centre */
+/* Centred hero — shifted upward from vertical centre.
+   clamp prevents the title from being clipped on short-screen laptops. */
 .home-center {
   position: relative;
   z-index: 10;
@@ -1400,7 +1401,7 @@ body:has(.home-fullscreen) { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transform: translateY(-12rem);
+  transform: translateY(min(-8rem, -12vh));
   gap: 0;
 }
 .home-brand {
@@ -1741,6 +1742,158 @@ body:has(.home-fullscreen) { overflow: hidden; }
 @keyframes pulse  { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 @keyframes spin   { to { transform: rotate(360deg); } }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─────────────────────────────────────────────────────────────────
+   HOME PAGE — WhatsApp channel button (bottom-left corner)
+───────────────────────────────────────────────────────────────── */
+.home-wa-btn {
+  position: fixed;
+  bottom: calc(var(--player-height) + 0.85rem);
+  left: 1.25rem;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  background: #25d366;
+  border-radius: 50px;
+  font-family: var(--font-hindi-round);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.35);
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+.home-wa-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.04);
+  text-decoration: none;
+}
+.home-wa-btn:active { transform: scale(0.97); }
+
+/* ─────────────────────────────────────────────────────────────────
+   HOME PAGE — Support / Donate modal trigger (bottom-right corner)
+───────────────────────────────────────────────────────────────── */
+.home-support-btn {
+  position: fixed;
+  bottom: calc(var(--player-height) + 0.85rem);
+  right: 1.25rem;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  background: rgba(10,5,1,0.65);
+  border: 1px solid rgba(201,146,42,0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-family: var(--font-hindi-round);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+.home-support-btn:hover {
+  background: rgba(201,146,42,0.15);
+  border-color: rgba(201,146,42,0.6);
+  transform: scale(1.04);
+}
+.home-support-btn:active { transform: scale(0.97); }
+
+/* ─────────────────────────────────────────────────────────────────
+   SUPPORT MODAL overlay
+───────────────────────────────────────────────────────────────── */
+.support-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(4,2,0,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.18s ease;
+}
+.support-modal {
+  position: relative;
+  background: linear-gradient(160deg, rgba(20,10,2,0.97) 0%, rgba(10,5,0,0.97) 100%);
+  border: 1px solid rgba(201,146,42,0.28);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2rem 1.75rem;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.support-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  background: none;
+  border: none;
+  color: rgba(200,185,160,0.45);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: color var(--transition-fast);
+}
+.support-modal-close:hover { color: var(--color-gold-light); }
+.support-modal-emoji {
+  font-size: 2.2rem;
+  margin-bottom: 0.65rem;
+}
+.support-modal-title {
+  font-family: var(--font-hindi-decor);
+  font-size: clamp(1.25rem, 4vw, 1.55rem);
+  color: var(--color-gold-light);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.support-modal-body {
+  font-family: var(--font-hindi-round);
+  font-size: 0.88rem;
+  color: rgba(220,205,175,0.82);
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+}
+.support-modal-qr {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1.25rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed rgba(201,146,42,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(200,185,160,0.4);
+  font-size: 0.75rem;
+  font-family: var(--font-hindi-round);
+  letter-spacing: 0.04em;
+}
+.support-modal-note {
+  font-size: 0.72rem;
+  color: rgba(200,185,160,0.4);
+  font-family: var(--font-hindi-round);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .home-wa-btn, .home-support-btn {
+    font-size: 0.68rem;
+    padding: 0.45rem 0.85rem;
+  }
+}
 
 /* Honour prefers-reduced-motion: freeze all home overlay animations */
 @media (prefers-reduced-motion: reduce) {
